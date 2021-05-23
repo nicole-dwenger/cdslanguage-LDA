@@ -158,13 +158,13 @@ __2. Are there any temoral developments over the years the topics that the talks
 
 Below, the temporal development of topics from 2016-2020 are displayed, see `file` for larger size of image: 
 
-![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topic_time.png)
+![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topics_over_time.png)
 
 Looking at this development, there seems a few topics which are fairly dominant across time, which are topic Family (10), Technology (2) and Climate (1). The reason for this might be, that the words of these topic may not be a distinct and specific category, but that many talks make use of these more general words (e.g. women, children, today, change, work). For the topic of Planet Eart and Space (13) there seems to be quite an increase around 2019, which might simply be due to an increased awareness of the ennvironment. Lastly, the topic of Love (12) seems to not be as dominant, which might also be related to the fact that the words seemed to come from a range of topics, and it was not very clear how they fit together.
 
 __3. Is is possible to generate "recommendations" of talks for each of the topics?__ 
 
-For the full list of the 3 talks which had the highest percentage of contribution for each topic, see the [file](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_representatives.png) in the `out/` directory, only a few examples will be discussed here. 
+For the full list of the 3 talks which had the highest percentage of contribution for each topic, see the [file](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_representatives.txt) in the `out/` directory, only a few examples will be discussed here. 
 
 For Planet Earth & Space (13) the following titles were extracted: '3 moons and a planet that could have alien life', 'Is space trying to kill us?', 'A needle in countless haystacks: Finding habitable worlds'. Based on only the titles, these talks seem to fit quite nicely into the broad topic of Planet Earth and Space. 
 
