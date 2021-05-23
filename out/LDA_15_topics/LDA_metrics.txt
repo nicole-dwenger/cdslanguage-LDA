@@ -1,0 +1,3 @@
+Performence metrics of LDA for 15:
+
+{'Perplextity': -8.66207856233145, 'Coherence': 0.4511447030073085}

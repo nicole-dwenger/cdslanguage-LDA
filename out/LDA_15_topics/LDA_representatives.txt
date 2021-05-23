@@ -1,0 +1,47 @@
+Top 3 Talks for each Topic
+
+Topic: 0.0
+['How to get back to work after a career break', 'Special Olympics let me be myself -- a champion', 'How college loans exploit students for profit']
+
+Topic: 1.0
+['The next manufacturing revolution is here', '4 ways we can avoid a catastrophic drought', 'Can you solve the dark matter fuel riddle?']
+
+Topic: 2.0
+['Shape-shifting tech will change work as we know it', '"Awoo"', 'How volumetric video brings a new dimension to filmmaking']
+
+Topic: 3.0
+['A robot that runs and swims like a salamander', '"Interpassion" / "Ba$$in"', 'The physics of the "hardest move" in ballet']
+
+Topic: 4.0
+['Gene editing can now change an entire species -- forever', "Why helmets don't prevent concussions -- and what might", "The nit-picking glory of The New Yorker's Comma Queen"]
+
+Topic: 5.0
+['What are stem cells?', 'The power of the placebo effect', 'The dangers of mixing drugs']
+
+Topic: 6.0
+['A visual history of social dance in 25 moves', 'How to save a language from extinction', '4 reasons to learn a new language']
+
+Topic: 7.0
+['"Rebelosis" / "Rebel Rock" / "Rebel on That Level"', '"Dead Romance"', 'The power of the Afro pick']
+
+Topic: 8.0
+['Crisis support for the world, one text away', 'Why the hospital of the future will be your own home', 'How barbershops can keep men healthy']
+
+Topic: 9.0
+['How cryptocurrency can help start-ups get investment capital', 'Does your vote count? The Electoral College explained', 'How does the stock market work?']
+
+Topic: 10.0
+['Why we should take laughter more seriously', 'Love others to love yourself', 'Three ideas. Three contradictions. Or not.']
+
+Topic: 11.0
+['How we can make crops survive without water', "The oil spill's toxic trade-off", 'The case for fish farming']
+
+Topic: 12.0
+['How "policing for profit" undermines your rights', 'I love being a police officer, but we need reform', 'A project of peace, painted across 50 buildings']
+
+Topic: 13.0
+['3 moons and a planet that could have alien life', 'Is space trying to kill us?', 'A needle in countless haystacks: Finding habitable worlds']
+
+Topic: 14.0
+['"You Found Me"', '"For Estefani, Third Grade, Who Made Me A Card"', 'My year of saying yes to everything']
+
