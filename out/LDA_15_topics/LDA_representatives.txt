@@ -1,47 +1,47 @@
 Top 3 Talks for each Topic
 
 Topic: 0.0
-['How to get back to work after a career break', 'Special Olympics let me be myself -- a champion', 'How college loans exploit students for profit']
+['How to get back to work after a career break', 'How college loans exploit students for profit', 'Special Olympics let me be myself -- a champion']
 
 Topic: 1.0
-['The next manufacturing revolution is here', '4 ways we can avoid a catastrophic drought', 'Can you solve the dark matter fuel riddle?']
+['The next manufacturing revolution is here', 'The wildly complex anatomy of a sneaker', 'A new way to remove CO2 from the atmosphere']
 
 Topic: 2.0
-['Shape-shifting tech will change work as we know it', '"Awoo"', 'How volumetric video brings a new dimension to filmmaking']
+['"Awoo"', 'Shape-shifting tech will change work as we know it', "What's an algorithm?"]
 
 Topic: 3.0
-['A robot that runs and swims like a salamander', '"Interpassion" / "Ba$$in"', 'The physics of the "hardest move" in ballet']
+['A robot that runs and swims like a salamander', '"Interpassion" / "Ba$$in"', "Why can't some birds fly?"]
 
 Topic: 4.0
-['Gene editing can now change an entire species -- forever', "Why helmets don't prevent concussions -- and what might", "The nit-picking glory of The New Yorker's Comma Queen"]
+['How stress affects your brain', 'How memories form and how we lose them', 'What happens when you have a concussion?']
 
 Topic: 5.0
-['What are stem cells?', 'The power of the placebo effect', 'The dangers of mixing drugs']
+['The problem with race-based medicine', 'Why do people fear the wrong things?', 'The laws that sex workers really want']
 
 Topic: 6.0
-['A visual history of social dance in 25 moves', 'How to save a language from extinction', '4 reasons to learn a new language']
+['A visual history of social dance in 25 moves', 'Why we need gender-neutral bathrooms', 'How to save a language from extinction']
 
 Topic: 7.0
-['"Rebelosis" / "Rebel Rock" / "Rebel on That Level"', '"Dead Romance"', 'The power of the Afro pick']
+['"Rebelosis" / "Rebel Rock" / "Rebel on That Level"', '"Dead Romance"', "How I'm discovering the secrets of ancient texts"]
 
 Topic: 8.0
-['Crisis support for the world, one text away', 'Why the hospital of the future will be your own home', 'How barbershops can keep men healthy']
+['How barbershops can keep men healthy', 'Why the hospital of the future will be your own home', "How we'll fight the next deadly virus"]
 
 Topic: 9.0
-['How cryptocurrency can help start-ups get investment capital', 'Does your vote count? The Electoral College explained', 'How does the stock market work?']
+['How cryptocurrency can help start-ups get investment capital', 'Does your vote count? The Electoral College explained', 'How is power divided in the United States government?']
 
 Topic: 10.0
-['Why we should take laughter more seriously', 'Love others to love yourself', 'Three ideas. Three contradictions. Or not.']
+['Why we should take laughter more seriously', 'Love others to love yourself', "I grew up in the Westboro Baptist Church. Here's why I left"]
 
 Topic: 11.0
-['How we can make crops survive without water', "The oil spill's toxic trade-off", 'The case for fish farming']
+['A new superweapon in the fight against cancer', 'What the sugar coating on your cells is trying to tell you', 'How we can make crops survive without water']
 
 Topic: 12.0
-['How "policing for profit" undermines your rights', 'I love being a police officer, but we need reform', 'A project of peace, painted across 50 buildings']
+['I love being a police officer, but we need reform', 'A project of peace, painted across 50 buildings', 'Buildings that blend nature and city']
 
 Topic: 13.0
-['3 moons and a planet that could have alien life', 'Is space trying to kill us?', 'A needle in countless haystacks: Finding habitable worlds']
+['A needle in countless haystacks: Finding habitable worlds', '3 moons and a planet that could have alien life', 'Could the Earth be swallowed by a black hole?']
 
 Topic: 14.0
-['"You Found Me"', '"For Estefani, Third Grade, Who Made Me A Card"', 'My year of saying yes to everything']
+['"You Found Me"', 'Songs that bring history to life', 'My year of saying yes to everything']
 

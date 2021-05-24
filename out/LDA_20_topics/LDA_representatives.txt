@@ -1,62 +1,62 @@
 Top 3 Talks for each Topic
 
 Topic: 0.0
-['Special Olympics let me be myself -- a champion', "How Argentina's blind soccer team became champions", 'How college loans exploit students for profit']
+['Special Olympics let me be myself -- a champion', 'How college loans exploit students for profit', "How Argentina's blind soccer team became champions"]
 
 Topic: 1.0
-['Can you solve the dark matter fuel riddle?', '4 ways we can avoid a catastrophic drought', "A climate change solution that's right under our feet"]
+['Can you solve the dark matter fuel riddle?', '4 ways we can avoid a catastrophic drought', 'A circular economy for salt that keeps rivers clean']
 
 Topic: 2.0
-['A glimpse of the future through an augmented reality headset', 'Meet the dazzling flying machines of the future', 'Shape-shifting tech will change work as we know it']
+["What's an algorithm?", 'Can a computer write poetry?', 'Meet the dazzling flying machines of the future']
 
 Topic: 3.0
-['A robot that runs and swims like a salamander', "Why can't some birds fly?", 'We can reprogram life. How to do it wisely']
+['A robot that runs and swims like a salamander', "Why can't some birds fly?", 'Why do cats act so weird?']
 
 Topic: 4.0
-['One is one... or is it?', 'You have no idea where camels really come from', 'The agony of trying to unsubscribe']
+['You have no idea where camels really come from', "The benefits of a good night's sleep", 'Why do we dream?']
 
 Topic: 5.0
-['What are stem cells?', 'The dangers of mixing drugs', 'Hacking bacteria to fight cancer']
+['What are stem cells?', 'The dangers of mixing drugs', 'What the sugar coating on your cells is trying to tell you']
 
 Topic: 6.0
 ['A visual history of social dance in 25 moves', '4 reasons to learn a new language', "Are Elvish, Klingon, Dothraki and Na'vi real languages?"]
 
 Topic: 7.0
-["How I'm discovering the secrets of ancient texts", 'Why I keep speaking up, even when people mock my accent', 'Cómo darle credibilidad a tu voz']
+["How I'm discovering the secrets of ancient texts", 'Cómo darle credibilidad a tu voz', 'What really happened to the Library of Alexandria?']
 
 Topic: 8.0
-["The nit-picking glory of The New Yorker's Comma Queen", '"You Found Me"', '"Rebelosis" / "Rebel Rock" / "Rebel on That Level"']
+["How we'll fight the next deadly virus", '"Rebelosis" / "Rebel Rock" / "Rebel on That Level"', 'Why the hospital of the future will be your own home']
 
 Topic: 9.0
 ['How to use data to make a hit TV show', 'Two reasons companies fail -- and how to avoid them', 'Our campaign to ban plastic bags in Bali']
 
 Topic: 10.0
-['Do kids think of sperm donors as family?', 'The beautiful, hard work of co-parenting', 'My love letter to cosplay']
+["What's the smallest thing in the universe?", "Hawking's black hole paradox explained", 'Have we reached the end of physics?']
 
 Topic: 11.0
-['The case for fish farming', 'How we can make crops survive without water', 'Underwater farms vs. climate change']
+['The case for fish farming', 'How we can make crops survive without water', 'Dead stuff: The secret ingredient in our food chain']
 
 Topic: 12.0
-['A project of peace, painted across 50 buildings', 'Does your vote count? The Electoral College explained', '"Redemption Song"']
+['"Redemption Song"', 'A different way to visualize rhythm', 'A project of peace, painted across 50 buildings']
 
 Topic: 13.0
-['Could the Earth be swallowed by a black hole?', 'What a planet needs to sustain life', 'The death of the universe']
+['The secrets I find on the mysterious ocean floor', 'Why Earth may someday look like Mars', 'A needle in countless haystacks: Finding habitable worlds']
 
 Topic: 14.0
-['Songs that bring history to life', 'My year of saying yes to everything', 'This is what happens when you reply to spam email']
+['Songs that bring history to life', '"For Estefani, Third Grade, Who Made Me A Card"', 'This is what happens when you reply to spam email']
 
 Topic: 15.0
-['Why the hospital of the future will be your own home', 'Why your doctor should care about social justice', 'Why you should know how much your coworkers get paid']
+['The Infinite Hotel Paradox', 'Why you should know how much your coworkers get paid', 'Crisis support for the world, one text away']
 
 Topic: 16.0
-["Economic growth has stalled. Let's fix it", 'How the blockchain will radically transform the economy', 'We can fight terror without sacrificing our rights']
+["Economic growth has stalled. Let's fix it", 'How Africa can keep rising', 'We can fight terror without sacrificing our rights']
 
 Topic: 17.0
 ['The laws that sex workers really want', 'How "policing for profit" undermines your rights', "A prosecutor's vision for a better justice system"]
 
 Topic: 18.0
-["Our refugee system is failing. Here's how we can fix it", 'What does it mean to be a refugee?', 'The fundamental right to seek asylum']
+['What does it mean to be a refugee?', 'The fundamental right to seek asylum']
 
 Topic: 19.0
-['Love others to love yourself', 'Inside the mind of a former radical jihadist', 'Can you solve the famously difficult green-eyed logic puzzle?']
+['Love others to love yourself', 'Why you should talk to strangers', '"Interpassion" / "Ba$$in"']
 

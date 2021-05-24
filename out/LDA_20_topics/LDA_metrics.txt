@@ -1,3 +1,3 @@
 Performence metrics of LDA for 20:
 
-{'Perplextity': -8.782083829648203, 'Coherence': 0.43668645973861714}
+{'Perplextity': -9.035220111027527, 'Coherence': 0.45120737762754953}

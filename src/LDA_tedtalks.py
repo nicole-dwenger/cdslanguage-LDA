@@ -73,7 +73,7 @@ def main():
     year_above = args["year_above"]
     
     # Prepare output directory
-    output_directory = os.path.join("..", "out", f"LDA_{n_topics}_topics_2")
+    output_directory = os.path.join("..", "out", f"LDA_{n_topics}_topics")
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
     
@@ -127,13 +127,13 @@ def main():
     LDA.plot_keywords(output_directory, "LDA_keywords.png")
 
     # Append the dominant topics to the original dataframe
-    LDA.append_text_topics(df, output_directory, "LDA_dominant_topics.csv")
+    LDA.save_dominant_topics(df, output_directory, "LDA_dominant_topics.csv")
 
     # Save the Top3 Texts for each topic
     LDA.save_representatives(output_directory, "LDA_representatives.txt")
 
     # Plot topics over time
-    LDA.plot_topics_over_time(df, output_directory, "LDA_topics_over_time.png")
+    LDA.plot_topics_over_time(output_directory, "LDA_topics_over_time.png")
     
     print(f"All Done! Output is in {output_directory}")
     

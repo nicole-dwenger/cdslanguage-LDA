@@ -14,7 +14,7 @@ Class LDA_Model:
   - evaluate_model: evaluate LDA model, using perplexity and coherence
   - save_metrics: save perplexity and coherence metrics in .txt file
   - plot_keywords: plot the count and weight of keywords for each topic
-  - append_text_topics: append the dominant topic to each talk in the original .csv
+  - save_dominant_topics: append the dominant topic to each talk in the original .csv
   - save_representatives: for each topic save the 3 talk titles with the highest topic contribution
   - plot_topics_over_time: plot the distribution of topics over time
 """
@@ -31,6 +31,7 @@ from pprint import pprint
 # Visualisation
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from matplotlib import rcParams
 import seaborn as sns
 
 # Spacy NLP
@@ -62,7 +63,7 @@ def load_data(input_file, year_above):
     """
     df = pd.read_csv(input_file)
     # Select only relevant columns
-    df = df.loc[:, ['title', 'published_date', 'topics', 'transcript']]
+    df = df.loc[:, ['title', 'published_date', 'topics', 'description', 'transcript']]
     # Turn data column into datetime format
     df["published_date"] = pd.to_datetime(df['published_date'])
     # Filter based on date
@@ -290,7 +291,7 @@ class LDA_Model():
         # Clear figure
         plt.clf()
         
-    def append_text_topics(self, df, output_directory, filename):
+    def save_dominant_topics(self, df, output_directory, filename):
         """
         Append to the original dataframe the dominant topic and the topic_perc_contrib, save as .csv
         """
@@ -343,7 +344,7 @@ class LDA_Model():
                 print(f"Topic: {topic}", file = f)
                 print(f"{topic_df.title.to_list()[:3]}\n", file = f)
      
-    def plot_topics_over_time(self, df, output_directory, filename):
+    def plot_topics_over_time(self, output_directory, filename):
         """
         Create visualisation of topic distributions over time, save as .png
         """
@@ -360,13 +361,24 @@ class LDA_Model():
             
         # Save in dataframe to plot
         topic_distributions = pd.DataFrame(map(list,zip(*split_topics)))
-        # Make the columns the original dates of the talk, so see on x-axis
-        topic_distributions.columns = df.published_date.tolist()
-        # Plot line plot with rolling mean
-        sns.lineplot(data=topic_distributions.T.rolling(250).mean())
-        # Save line plot
-        plt.savefig(os.path.join(output_directory, filename))
-        
+        # Get the dates from the original dataframe and append as columnames
+        dates = self.df_out.published_date.tolist()
+        topic_distributions.columns = pd.to_datetime(dates) 
+        # Transpose the dataframe, and make index to datetime for rolling mean
+        transposed_df = topic_distributions.T
+        transposed_df.index = pd.to_datetime(transposed_df.index)
+        rolling = transposed_df.rolling('90D').mean()
+        # Add date as column instead of inddex
+        rolling["Date"] = rolling.index
+        # Turn data from wide into long format for multiline plot
+        reshaped = rolling.melt("Date", var_name="Topic", value_name="Percentage")
+        reshaped['Topic'] = reshaped['Topic'].astype(str)
+        # Plot lineplot
+        ax = sns.lineplot(x="Date", y="Percentage", hue="Topic", style = "Topic", data=reshaped)
+        ax.set_ylim(0, 0.35)
+        ax.set_title("Distribution of Ted Talk Topics Over Time (2016-2020)")
+        # Save lineplot
+        plt.savefig(os.path.join(output_directory, filename))       
         
 if __name__=="__main__":
     pass
