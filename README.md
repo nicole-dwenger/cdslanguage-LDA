@@ -9,7 +9,7 @@ TedTalks have become popular as videos in which experts share their knowledge an
 
 LDA topic modelling is an unsupervised machine learning algorithm, which can help to extract topics from unlabelled text documents. LDA builds on the assumption that words in documents are derived from different clusters of topics. Put differently, words cluster into different topics, and documents are made up of these words. Thus, the distribution of words (and which cluster they belong to) can help to determine the distribution of topics for each document. The aim of LDA is to reverse engineer the topics (clusters) from which the words were drawn. In this project, each of the talks is considered to be a document in a large corpus of documents (corpus of talks). The aim of this project is to address the following questions:  considered to be a document in a large corpus of documents (corpus of talks).
 
-Specifically, this project aims to address the following questions: 
+Specifically, this project aimed to address the following questions: 
 1. Is it possible to find distinct topics across the transcript of TedTalks? 
 2. Are there any temporal developments in the topics of TedTalks?
 3. Is it possible to get “representative” talks for each of the topics?
@@ -135,7 +135,7 @@ __Output:__
 ## Results and Discussion 
 Output of the scripts can be found in the corresponding directory in `out/`. The model trained for 15 topics had a perplexity score of -8.69 and a coherence measure of 0.46. Below the results are illustrated and discussed in relation to the three questions posed above: 
 
-__1. Is it possible to find distinct topics across the transcript of TedTalks?__
+### 1. Is it possible to find distinct topics across the transcript of TedTalks?
 
 To answer this question, one can inspect the keywords each of the topics, to see if they relate to the same topic and thus compose a distinct topic. Below are displayed the keywords of the 15 derived topics: 
 
@@ -161,14 +161,14 @@ Based on these keywords, I could imagine the following fitting topic names:
 
 Overall, it seems that for some clusters e.g. Psychology & Neuroscience (4) or Health Care (8) it was quite easy to see how the keywords fit into a category. For others, e.g. Human Body & Animals (3) it was more difficult, since words seemed quite different (animal, robot, egg).
 
-__2. Are there any temporal developments in the topics of TedTalks?__
+### 2. Are there any temporal developments in the topics of TedTalks?
 
 Below, the temporal development of topics from 2016-2020 are displayed. Looking at this development, there seem to be a few topics which are fairly dominant across time, such as Family (10), Climate & Environment (1) and Technology (2). For me, this makes intuitively sense, as these topics have been quite dominant inn the past years. Further, it may also be that many talks relate to these topics in some way.  For the topic of Planet Earth  & Space (13) there seems to be an increase around 2019, which could be due to an increased interest in exploring Mars or other planets. This plot could have been improved by changing its dimensions, i.e. making it wider.
 
 ![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topics_over_time.png)
 
 
-__3. Is is possible to generate "recommendations" of talks for each of the topics?__ 
+### 3. Is is possible to generate "recommendations" of talks for each of the topics?
 
 The full list of representative talks for each topic can be seen in this [file](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_representatives.txt), stored in the `out/` directory. Only a few examples will be discussed in the following. 
 For Topic (4) Psychology & Neuroscience, the following titles were extracted: 'How stress affects your brain', 'How memories form and how we lose them', 'What happens when you have a concussion?'. Without knowing anything about the talks, these titles all seem to relate to the given topic name.
