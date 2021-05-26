@@ -20,8 +20,8 @@ The data used for this project, was extracted from [Kaggle](https://www.kaggle.c
 1. All non-content aspects of the transcripts, e.g. (Laughter) were removed by removing everything that was in () or [].
 2. All texts were tokenised and the tokens were lowered using the `simple_preprocess` function from gensim.
 3. Stop words were removed using the english stop-word list from NLTK. 
-4. Bigrams and trigrams were extracted using a minimum count of 3 and a threshold of 100. This was done by extracting tokens which frequently occur together and thus can be expected to have a meaning as a combined entity, rather than on their own. For instance, For instance, if the tokens new and york occur together they should be seen as new york. 
-5. To reduce noise for topic modelling, only nouns (as determined by spaCy’s POS tag of the language model en_core_web_sm) were extracted, as they were expected to contribute most to the meaning or content of a talk. 
+4. Bigrams and trigrams were extracted using a minimum count of 3 and a threshold of 100. This was done by extracting tokens which frequently occur together and thus can be expected to have a meaning as a combined entity, rather than on their own. For instance, if the tokens *new* and *york* occur together they should be seen as *new york*. 
+5. To reduce noise for topic modelling, only nouns (as determined by spaCy’s POS tag of the language model `en_core_web_sm`) were extracted, as they were expected to contribute most to the meaning or content of a talk. 
 6. All tokens were lemmatised.
 7. Lastly, after running the LDA model multiple times, there were still some words which occurred across several topics. Thus, a list was constructed with words which seemed to contribute relatively little to the meaning of a specific topic. This list contained the following tokens: *people, world, talk, time, other, hundred, one, life, thousand, number, way, year, thing, story, day, lot, question, idea, word*.
 
@@ -85,7 +85,7 @@ source venv_LDA/bin/activate
 ### 2. Data 
 The raw data, which was originally downloaded from [Kaggle](https://www.kaggle.com/miguelcorraljr/ted-ultimate-dataset) is stored in the `data/` directory of this repository.  Thus, after cloning the repository, it is not necessary to retrieve any additional data.
 
-### 3. Script for LDA Topic Modelling on TedTalk Transcripts
+### 3. Script for LDA Topic Modelling on TedTalk Transcripts: LDA_tedtalks.py
 The script `LDA_tedtalks.py` preprocesses the TedTalk transcripts, following the steps above. Subsequently, it will conduct an LDA topic analysis on a given number of topics, and produce the outputs, described below. The script should be called from the `src/` directory:
 
 ```bash
@@ -108,9 +108,9 @@ __Parameters:__
    Number of topics to extract.
  
 - `-y, --year_above`: *int, optional, default:* `2015`\
-   All talks which were published later than the given year. For 2015 this would be all talks from 2016-2020.  
+   All talks which were published later than the given year. For `2015` this would be all talks from 2016-2020.  
    
-__Output:__
+__Output saved in__ saved `out/LDA_{n_topics}_topics`:
 
 - `LDA_metrics.txt`\
    File containing coherence and perplexity scores. 
