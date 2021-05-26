@@ -101,7 +101,7 @@ def main():
     # Remove self-defined list of words
     remove_words = ["people", "world", "talk", "time", "other", "hundred", "one", "life", "thousand", 
                     "number", "way","year", "thing", "story", "day", "lot", "question", "idea", "word"]
-    processed_texts = [[word for word in doc if word not in remove_words] for doc in processed_texts]
+    processed_texts = [[word for word in text if word not in remove_words] for text in processed_texts]
     
     # Create dictionary and corpus from token lists
     dictionary = corpora.Dictionary(processed_texts)    

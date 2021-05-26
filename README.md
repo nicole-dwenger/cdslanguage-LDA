@@ -21,13 +21,13 @@ Specifically, this project aims to address the following questions:
 The data, which was used for this project is a dataset from [Kaggle](https://www.kaggle.com/miguelcorraljr/ted-ultimate-dataset), containing information and transcripts of 4005 English TedTalks from 2016 to 2020. To reduce processing time I only used talks from 2016-2020, leading to a total of 2167 talks. These transcripts were preprocessed with the following steps: 
  
 The transcripts were preprocessed using the following steps: 
-1. Remove all "non-content" aspects of the transcripts, e.g. *(Laugther)*, by removing everything that is in "()" or "[]".
+1. Remove all "non-content" aspects of the transcripts, e.g. *(Laugther)*, by removing everything that is in () or [].
 2. Lowercase and tokenize all texts using gensim's simple_preprocess function.
 3. Remove stopwords using the english stopword list from nltk.
 4. Create bigrams and trigrams, using a minimum count of 3 and a threshold of 100. 
 5. Extract only tokens which are NOUNS (as determined by spaCy’s POS tag)
 6. Lemmatise all tokens.
-6. Remove tokens using a self-defined list, which was developed by running multiple LDA analyses, and finding which words occurred often in many topics, and seem to contribute relatively little about the meaning of a topic. This list contained the following tokens: *people, world, talk, time, other, hundred, one, life, thousand, number, way, year, thing, story, day, lot, question, idea, word*
+6. Remove tokens using a self-defined list, which was developed by running multiple LDA analyses, and finding which words occurred often in many topics, and seem to contribute relatively little about the meaning of a topic. This list contained the following tokens: *people, world, talk, time, other, hundred, one, life, thousand, number, way, year, thing, story, day, lot, question, idea, word*.
 
 ### LDA Topic Modelling
 For topic modelling, a LDAMulticore model was trained on the derived dictionary and corpus of tokens. The model was run for 15 topics and for 20 topics. Based on a higher coherence score for 15 topics (0.45) compared to 20 topics (0.43), the focus in the following will be on the model trained for 15 topics. However, output is provided for both models in the out/ directory of the GitHub repository. Optimally, an exploration of more coherence values for different number of topics should have been conducted, but was omitted for time and processing reasons. Using the derived topics and distributions of topics for each of the texts, the following outputs are generated to address the questions (1)-(3) outlined above: 
@@ -123,7 +123,7 @@ __Output:__
    Visualisation of count and weight of keywords for each topic. 
    
 - `LDA_dominant_topics.csv`\
-   Origial .csv dataframe, with appended columns of `dominant_topic` and `topic_perc_contib`
+   Origial .csv dataframe, with appended columns of dominant_topic and topic_perc_contib.
    
 - `LDA_representatives.txt`\
    For each topic, the three talks with the highest contribution are printed. 
@@ -163,11 +163,10 @@ Overall, it seems that for some clusters e.g. Psychology & Neuroscience (4) or H
 
 __2. Are there any temporal developments in the topics of TedTalks?__
 
-Below, the temporal development of topics from 2016-2020 are displayed:
+Below, the temporal development of topics from 2016-2020 are displayed. Looking at this development, there seem to be a few topics which are fairly dominant across time, such as Family (10), Climate & Environment (1) and Technology (2). For me, this makes intuitively sense, as these topics have been quite dominant inn the past years. Further, it may also be that many talks relate to these topics in some way.  For the topic of Planet Earth  & Space (13) there seems to be an increase around 2019, which could be due to an increased interest in exploring Mars or other planets. This plot could have been improved by changing its dimensions, i.e. making it wider.
 
 ![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topics_over_time.png)
 
-Looking at this development, there seem to be a few topics which are fairly dominant across time, such as Family (10), Climate & Environment (1) and Technology (2). For me, this makes intuitively sense, as these topics have been quite dominant inn the past years. Further, it may also be that many talks relate to these topics in some way.  For the topic of Planet Earth  & Space (13) there seems to be an increase around 2019, which could be due to an increased interest in exploring Mars or other planets.
 
 __3. Is is possible to generate "recommendations" of talks for each of the topics?__ 
 

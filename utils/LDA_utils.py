@@ -155,7 +155,7 @@ class LDA_Model():
         self.dictionary = dictionary
         self.n_topics = n_topics
       
-        # Varaibles, which are added through functios
+        # Varaibles, which are added through functions
         self.model = None
         self.metrics = None
         self.df_out = None
@@ -189,7 +189,6 @@ class LDA_Model():
         
         # Append metrics to self
         self.metrics = {"Perplextity": perplexity, "Coherence": coherence}
-        
         # Print metrics
         print(f"[INFO] LDA model metrics: {self.metrics}")
         
@@ -199,7 +198,6 @@ class LDA_Model():
         """
         # Define output path
         out_path = os.path.join(output_directory, filename)
-        
         # Save metrics to file
         with open(out_path, "w") as file:
             print(f"Performence metrics of LDA for {self.n_topics}:\n", file=file)
