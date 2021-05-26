@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-LDA Topic Modelling on Transcripts of English Ted Talks from 2016-2020
+LDA Topic Modelling on Transcripts of English Ted Talks from 2016-2020.
 
 Steps: 
   - Load data, select talks from 2016-2020, remove non-content parts of the transcripts

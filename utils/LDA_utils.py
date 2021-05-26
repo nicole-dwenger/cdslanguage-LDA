@@ -218,7 +218,7 @@ class LDA_Model():
         # Initialise counter 
         counter = Counter(data_flat)
         
-        # Get weights and countns for words
+        # Get weights and counts for words
         word_counts = []
         for i, topic in topics:
             for word, weight in topic:
@@ -253,6 +253,7 @@ class LDA_Model():
             ax.set_ylabel('Word Count', color=cols[i])
             # Set y-axis limits
             ax_twin.set_ylim(0, max_weight); ax.set_ylim(0, max_wc)
+            # Remove labels in following plots in a row
             ax.tick_params(axis='y', left=False)
             # Set x-axis labels
             ax.set_xticklabels(df.loc[df.topic_id==i, 'word'], rotation=30, horizontalalignment= 'right')
@@ -297,7 +298,6 @@ class LDA_Model():
         df_topics = df_topics.reset_index()
         # Append topics to the original dataframe based on inddexe
         self.df_out = pd.concat([df, df_topics], axis=1)
-
         # Save in output
         self.df_out.to_csv(os.path.join(output_directory, filename))
         
@@ -345,9 +345,11 @@ class LDA_Model():
         topic_distributions = pd.DataFrame(map(list,zip(*split_topics)))
         # Get the dates from the original dataframe and append as columnames
         dates = self.df_out.published_date.tolist()
+        # Turn into datetime format
         topic_distributions.columns = pd.to_datetime(dates) 
         # Transpose the dataframe, and make index to datetime for rolling mean
         transposed_df = topic_distributions.T
+        # Trun into datetime format again, to be sure
         transposed_df.index = pd.to_datetime(transposed_df.index)
         # Compute rolling mean over 90 days
         rolling = transposed_df.rolling('90D').mean()
