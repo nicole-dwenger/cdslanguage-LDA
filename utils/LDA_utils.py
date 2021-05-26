@@ -17,6 +17,9 @@ Class LDA_Model:
   - save_dominant_topics: append the dominant topic to each talk in the original .csv
   - save_representatives: for each topic save the 3 talk titles with the highest topic contribution
   - plot_topics_over_time: plot the distribution of topics over time
+  
+Note: many functions were taken from class content or this tutorial: 
+https://www.machinelearningplus.com/nlp/topic-modeling-visualization-how-to-present-results-lda-models/
 """
 
 # LIBRARIES ---------------------------------------------------
@@ -108,11 +111,11 @@ def process_words(texts, nlp, bigram_mod, trigram_mod, stop_words, allowed_posta
       - texts_out: processed texts: list of lemmatised tokens of defined POS tag
     """
     # Remove stopwords and use gensim simple process
-    texts = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
+    texts = [[word for word in simple_preprocess(str(text)) if word not in stop_words] for text in texts]
     # Create bigrams
-    texts = [bigram_mod[doc] for doc in texts]
+    texts = [bigram_mod[text] for text in texts]
     # Create trigrams
-    texts = [trigram_mod[bigram_mod[doc]] for doc in texts]
+    texts = [trigram_mod[bigram_mod[text]] for text in texts]
     
     # Create empty target output list
     processed_texts = []

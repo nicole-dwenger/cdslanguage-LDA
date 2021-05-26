@@ -26,7 +26,6 @@ Outputs saved in out/LDA_{n_topics}_topics/:
   - LDA_topics_over_time.png: temporal development of topics over time  
 """
 
-
 # LIBRARIES ----------------------------------------------------------
 
 # Basics
