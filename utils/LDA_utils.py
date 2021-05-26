@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Utility functions and class for LDA topic modelling on Ted Talks
+Utility functions and class for LDA topic modelling on TedTalks.
 
 Functions: 
   - load_data: load tedtalk data and filter based on the year
@@ -124,56 +124,30 @@ def process_words(texts, nlp, bigram_mod, trigram_mod, stop_words, allowed_posta
         processed_texts.append([token.lemma_ for token in doc if token.pos_ in allowed_postags]) 
         
     return processed_texts
-
-def get_coherence_values(dictionary, corpus, texts, start, limit, step, output_directory, filename):
-    """
-    Compute coherence values for n topics, function taken from class content
-    Input: 
-      - dictionary, corpus
-      - texts: processed texts, i.e. lists of lemmatised tokens
-      - start: min number of topics
-      - limit: max number of topics
-      - step: number of steps
-    Returns:
-      - model_list: list of LDA models
-      - coherence_values: list of coherence values
-    """
-    # Create empty list of coherence values
-    coherence_values = []
-    for num_topics in range(start, limit, step):
-        # Run the model with the given number of topics
-        model = gensim.models.LdaMulticore(corpus=corpus, num_topics=num_topics, id2word=dictionary)
-        # Get the coherence scores
-        coherencemodel = CoherenceModel(model=model, texts=texts, dictionary=dictionary, coherence='c_v')
-        # Append coherence scores to the coherence values list
-        coherence_values.append(coherencemodel.get_coherence())
-    
-    # Create plot
-    x = range(start, limit, step)
-    plt.plot(x, coherence_values)
-    plt.xlabel("Num Topics")
-    plt.ylabel("Coherence score")
-    plt.legend(("coherence_values"), loc='best')
-    
-    # Save figure in output path
-    plt.savefig(os.path.join(output_directory, filename))
-    
-    # Print the coherence scores
-    print("\n[OUTPUT] Coherence Scores for Topics 5-40:")
-    for m, cv in zip(x, coherence_values):
-        print("Num Topics =", m, " has Coherence Value of", round(cv, 4))
-
         
 # LDA CLASS -------------------------------------------------------
 
 class LDA_Model():
     """
     LDA Topic Modelling Class
+    Initialised with: 
+      - preprocessed texts: list of processed tokens for each text
+      - corpus: corpus of tokens of texts
+      - dictonary: dictionary of tokens of texts
+      - n_topics: number of topics       
+    Fucntions: 
+      - train_model: train LDA model
+      - evaluate_model: get perplextiy and coherence scores
+      - save_metrics: save perplextiy and coherence scores in .txt file
+      - plot_keywords: plot the count and weight of keywords for each topic
+      - save_dominant_topics: append the dominant topic to each talk in the original .csv
+      - save_representatives: for each topic save the 3 talk titles with the highest topic contribution
+      - plot_topics_over_time: plot the distribution of topics over time
     """
     
     def __init__(self, processed_texts, corpus, dictionary, n_topics):
         """
-        Define variables assigned to self
+        Save input variables, assigned to the class
         """
         # Variables defined when initialising class
         self.processed_texts = processed_texts
@@ -202,7 +176,7 @@ class LDA_Model():
      
     def evaluate_model(self):
         """
-        Evaluate LDA: get coherence and perplexity
+        Evaluate LDA, i.e. get coherence and perplexity
         """
         # Get perplexity
         perplexity = self.model.log_perplexity(self.corpus)
@@ -234,8 +208,7 @@ class LDA_Model():
     def plot_keywords(self, output_directory, filename):
         """
         Create plot of counts ad weights of keywords for each topic,
-        save as one .png file
-          - Function adjusted from class content
+        save as one .png file (function adjusted from class content)
         """
         # Get topic names
         topics = self.model.show_topics(formatted=False, num_topics=self.n_topics)
@@ -259,31 +232,37 @@ class LDA_Model():
         # Define number of rows based on number of topics
         n_rows = (ceil(self.n_topics/3))
         
-        # Initialise plot
-        # Define subplots
+        # Initialise plot, by defining subplots
         fig, axes = plt.subplots(n_rows, 3, figsize=(18,(n_rows*3)), sharey=True, dpi=160)
-        # Define colours
+        # Define colours, repeat colors 3 times to have enough for 20 topics
         cols = ([color for name, color in mcolors.TABLEAU_COLORS.items()] + 
                 [color for name, color in mcolors.TABLEAU_COLORS.items()] +
                 [color for name, color in mcolors.TABLEAU_COLORS.items()])
         
+        # For each subplot:
         for i, ax in enumerate(axes.flatten()):
-            # Plot wor counts
+            # Plot word counts
             ax.bar(x='word', height="word_count", data=df.loc[df.topic_id==i, :], 
                    color=cols[i], width=0.5, alpha=0.3, label='Word Count')
             # Plot weights
             ax_twin = ax.twinx()
             ax_twin.bar(x='word', height="weight", data=df.loc[df.topic_id==i, :], 
                         color=cols[i], width=0.2, label='Weights')
-            # Self labels
+            # Plot labels
             ax.set_ylabel('Word Count', color=cols[i])
+            # Set y-axis limits
             ax_twin.set_ylim(0, max_weight); ax.set_ylim(0, max_wc)
-            ax.set_title('Topic: ' + str(i), color=cols[i], fontsize=16)
             ax.tick_params(axis='y', left=False)
+            # Set x-axis labels
             ax.set_xticklabels(df.loc[df.topic_id==i, 'word'], rotation=30, horizontalalignment= 'right')
+            # Set title
+            ax.set_title('Topic: ' + str(i), color=cols[i], fontsize=16)
+            # Set legend
             ax.legend(loc='upper left'); ax_twin.legend(loc='upper right')
 
-        fig.tight_layout(w_pad=2)    
+        # Add padding
+        fig.tight_layout(w_pad=2)
+        # Add overall title
         fig.suptitle('Word Count and Importance of Topic Keywords', fontsize=22, y=1.05)    
         
         # Save figure
@@ -293,12 +272,12 @@ class LDA_Model():
         
     def save_dominant_topics(self, df, output_directory, filename):
         """
-        Append to the original dataframe the dominant topic and the topic_perc_contrib, save as .csv
+        Append to the original dataframe the dominant topic and the topic_perc_contrib
+        and save as .csv file (function adjusted from class content)
         """
         # Initialise empty dataframe to save topic and topic_perc_contrib
         df_topics = pd.DataFrame()
         # Get the dominant topic, percentage contibution and keyword for each text
-        # Function adjusted from class content
         for i, row_list in enumerate(self.model[self.corpus]):
             row = row_list[0] if self.model.per_word_topics else row_list  
             row = sorted(row, key=lambda x: (x[1]), reverse=True)
@@ -315,7 +294,6 @@ class LDA_Model():
         df_topics.columns = ['dominant_topic', 'topic_perc_contrib']
         # Reset index to append to original dataframe
         df_topics = df_topics.reset_index()
-    
         # Append topics to the original dataframe based on inddexe
         self.df_out = pd.concat([df, df_topics], axis=1)
 
@@ -324,9 +302,10 @@ class LDA_Model():
         
     def save_representatives(self, output_directory, filename):
         """
-        Get the top 3 documents, which have the highest topic contribution for each document, save as .txt
+        From the topic distributions of the dominant topic for each topic, 
+        select all topic with a given dominant topic, get those documents,
+        which have the highest contribution, and save as "representatives" in .txt
         """
-        
         # Define path to output file for recommendatios
         out_path = os.path.join(output_directory, filename)
         
@@ -346,7 +325,9 @@ class LDA_Model():
      
     def plot_topics_over_time(self, output_directory, filename):
         """
-        Create visualisation of topic distributions over time, save as .png
+        Using the percental distiributions of topics for each document 
+        and information about the publishing date, plot development
+        of topics over time with a 90d rolling average, save as .png
         """
         # Get the topic distributions for each of the documents
         values = list(self.model.get_document_topics(self.corpus))
@@ -367,15 +348,19 @@ class LDA_Model():
         # Transpose the dataframe, and make index to datetime for rolling mean
         transposed_df = topic_distributions.T
         transposed_df.index = pd.to_datetime(transposed_df.index)
+        # Compute rolling mean over 90 days
         rolling = transposed_df.rolling('90D').mean()
         # Add date as column instead of inddex
         rolling["Date"] = rolling.index
         # Turn data from wide into long format for multiline plot
         reshaped = rolling.melt("Date", var_name="Topic", value_name="Percentage")
+        # Make topic column as str
         reshaped['Topic'] = reshaped['Topic'].astype(str)
         # Plot lineplot
         ax = sns.lineplot(x="Date", y="Percentage", hue="Topic", style = "Topic", data=reshaped)
+        # Set y-limit to "zoom in"
         ax.set_ylim(0, 0.35)
+        # Set title
         ax.set_title("Distribution of Ted Talk Topics Over Time (2016-2020)")
         # Save lineplot
         plt.savefig(os.path.join(output_directory, filename))       

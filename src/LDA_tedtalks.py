@@ -4,11 +4,9 @@
 LDA Topic Modelling on Transcripts of English Ted Talks from 2016-2020
 
 Steps: 
-  - Load data, select talks from 2016-2020
-  - Remove non-content parts of the transcripts e.g. (Laugther)
+  - Load data, select talks from 2016-2020, remove non-content parts of the transcripts
   - Extract bigrams and trigrams of texts
-  - Process texts: tokenize, remove stopwords, create bigrams and trigrams, 
-    extract only those of POS tag, lemmatize
+  - Preprocess texts: tokenize, remove  stopwords, create bigrams and trigrams, extract only those of POS tag, lemmatize
   - Remove tokens of self-defined stop-word list
   - Create dictionary and corpus
   - Train and evaluate LDA
@@ -18,14 +16,14 @@ Steps:
 Input: 
   - -i, --input_file, str, path to input file of ted talks, optional, default: ../data/ted_talks_en.csv
   - -n, --n_topics, int, number of topics to extract, optional, default: 15
-  - -y, --year_above, int, above which year should ted talks be extracted?
+  - -y, --year_above, int, above which year should ted talks be extracted, default: 2015
 
 Outputs saved in out/LDA_{n_topics}_topics/:
   - LDA_metrics.txt: perplexity and coherence score, also printed to command line
   - LDA_keywords.png: visualisation of count and weight of keywords of each topics
-  - LDA_text_topics.csv: original dataframe, which appended columns of "dominant_topic" and "topic_perc_contib"
+  - LDA_dominant_topics.csv: original dataframe, which appended columns of "dominant_topic" and "topic_perc_contib"
   - LDA_representatives.txt: file with titles of 3 talks for each topic, which had the highest topic contribution
-  - LDA_topic_time.png: temporal development of topics over time  
+  - LDA_topics_over_time.png: temporal development of topics over time  
 """
 
 
@@ -33,11 +31,9 @@ Outputs saved in out/LDA_{n_topics}_topics/:
 
 # Basics
 import os
-import argparse
-
-# Data
-import pandas as pd
 import re
+import argparse
+import pandas as pd
 
 # NLP
 import nltk 
@@ -60,10 +56,13 @@ def main():
     
     # --- ARGUMENT PARSER AND OUTPUT DIRCETORY ---
     
-    # Argument parser for input file and number of topics
+    # Initialise argument parser
     ap = argparse.ArgumentParser()
+    # Add input option for input file
     ap.add_argument("-i", "--input_file", type=str, required=False, default = "../data/ted_talks_en.csv")
+    # Add input option for the number of topics
     ap.add_argument("-n", "--n_topics", type=int, required=False, default=15)
+    # Add input option for the years to select talks froms
     ap.add_argument("-y", "--year_above", type=int, required=False, default=2015)
     
     # Retrieve arguments
@@ -112,6 +111,7 @@ def main():
     
     print(f"[INFO] Training LDA model ...")
     
+    # Initialise LDA model class
     LDA = LDA_Model(processed_texts, corpus, dictionary, n_topics)
 
     # Train model
@@ -126,10 +126,10 @@ def main():
     # Plot keywords
     LDA.plot_keywords(output_directory, "LDA_keywords.png")
 
-    # Append the dominant topics to the original dataframe
+    # Append the dominant topics and their contribution to the original dataframe
     LDA.save_dominant_topics(df, output_directory, "LDA_dominant_topics.csv")
 
-    # Save the Top3 Texts for each topic
+    # Save the "representatives" for each topic
     LDA.save_representatives(output_directory, "LDA_representatives.txt")
 
     # Plot topics over time
