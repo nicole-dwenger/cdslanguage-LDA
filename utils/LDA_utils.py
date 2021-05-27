@@ -18,7 +18,7 @@ Class LDA_Model:
   - save_representatives: for each topic save the 3 talk titles with the highest topic contribution
   - plot_topics_over_time: plot the distribution of topics over time
   
-Note: many functions were taken from class content or this tutorial: 
+Note: many of the visualisation functions were taken from class content or this tutorial: 
 https://www.machinelearningplus.com/nlp/topic-modeling-visualization-how-to-present-results-lda-models/
 """
 
@@ -64,6 +64,7 @@ def load_data(input_file, year_above):
     Output: 
       - df: with selected columns, years and fixed index
     """
+    # Load input file
     df = pd.read_csv(input_file)
     # Select only relevant columns
     df = df.loc[:, ['title', 'published_date', 'topics', 'description', 'transcript']]
@@ -153,14 +154,21 @@ class LDA_Model():
         Save input variables, assigned to the class
         """
         # Variables defined when initialising class
+        # Processed texts (token list for each text)
         self.processed_texts = processed_texts
+        # Corpus of tokens
         self.corpus = corpus
+        # Dictionanry of tokens
         self.dictionary = dictionary
+        # Number of topics to extract
         self.n_topics = n_topics
       
         # Varaibles, which are added through functions
+        # Trained LDA model
         self.model = None
+        # Metrics of trained LDA model
         self.metrics = None
+        # Datarame with dominant topics and topic_perc_contrib
         self.df_out = None
         
     def train_model(self):
@@ -190,7 +198,7 @@ class LDA_Model():
                                     dictionary=self.dictionary, 
                                     coherence='c_v').get_coherence()
         
-        # Append metrics to self
+        # Append metrics in a dictionary to self
         self.metrics = {"Perplextity": perplexity, "Coherence": coherence}
         # Print metrics
         print(f"[INFO] LDA model metrics: {self.metrics}")
@@ -279,16 +287,13 @@ class LDA_Model():
         """
         # Initialise empty dataframe to save topic and topic_perc_contrib
         df_topics = pd.DataFrame()
-        # Get the dominant topic, percentage contibution and keyword for each text
+        # Get the dominant topic and percentage contibution for each text
         for i, row_list in enumerate(self.model[self.corpus]):
             row = row_list[0] if self.model.per_word_topics else row_list  
             row = sorted(row, key=lambda x: (x[1]), reverse=True)
             for j, (topic_num, prop_topic) in enumerate(row):
                 if j == 0: # = dominant topic
-                    wp = self.model.show_topic(topic_num)
-                    topic_keywords = ", ".join([word for word, prop in wp])
-                    df_topics = df_topics.append(pd.Series([int(topic_num), 
-                                                     round(prop_topic,4)]), ignore_index=True)
+                    df_topics = df_topics.append(pd.Series([int(topic_num), round(prop_topic,4)]), ignore_index=True)
                 else: 
                     break
          

@@ -102,7 +102,7 @@ def main():
                     "number", "way","year", "thing", "story", "day", "lot", "question", "idea", "word"]
     processed_texts = [[word for word in text if word not in remove_words] for text in processed_texts]
     
-    # Create dictionary and corpus from token lists
+    # Create dictionary and corpus from token lists (processed_texts)
     dictionary = corpora.Dictionary(processed_texts)    
     corpus = [dictionary.doc2bow(text) for text in processed_texts]
     

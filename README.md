@@ -5,11 +5,11 @@
 ## Description
 > This project relates to Assignment 5: (Un)Supervised Machine Learning
 
-TedTalks have become popular as videos in which experts share their knowledge and ideas. What if, in 100 years someone finds all these videos, but has no idea what they are about. It would be tedious to watch all of them, to find out. Thus, it would be great if there was a way to figure out which topics these talks cover based on their contents. Knowing what different talks are about and when they were published could also help to investigate how topics in these talks developed over time. Lastly, if someone was interested in a specific topic, they could find talks, which cover their topic of interest. This project aimed to investigate topics in transcripts of TedTalks using unsupervised machine learning, specifically LDA topic modelling.  Specifically, the following questions were of interest:
+TedTalks have become popular as videos in which experts share their knowledge and ideas. What if, in 100 years someone finds all these videos, but has no idea what they are about. It would be tedious to watch all of them, to find out. Thus, it would be great if there was a way to figure out which topics these talks cover based on their contents. Consequently, it would also be possible to find talks which cover a specific topic of interest. Lastly, knowing what different talks were about and when they were published could also help to investigate how topics in these talks developed over time, as an interesting indicator from a cultural perspective. This project aimed to investigate topics in transcripts of TedTalks using unsupervised machine learning, specifically LDA topic modelling.  Specifically, the following questions were of interest:
  
 1. Is it possible to find topics across the transcripts of TedTalks? 
-2. Are there any temporal developments in the topics of TedTalks?
-3. Is it possible to find *representative talks* for each of the topics? 
+2. Is it possible to find *representative talks* for each of the topics? 
+3. Are there any temporal developments in the topics of TedTalks?
 
 
 ## Methods
@@ -23,10 +23,10 @@ The data used for this project, was extracted from [Kaggle](https://www.kaggle.c
 4. Bigrams and trigrams were extracted using a minimum count of 3 and a threshold of 100. This was done by extracting tokens which frequently occur together and thus can be expected to have a meaning as a combined entity, rather than on their own. For instance, if the tokens *new* and *york* occur together they should be seen as *new york*. 
 5. To reduce noise for topic modelling, only nouns (as determined by spaCy’s POS tag of the language model `en_core_web_sm`) were extracted, as they were expected to contribute most to the meaning or content of a talk. 
 6. All tokens were lemmatised.
-7. Lastly, after running the LDA model multiple times, there were still some words which occurred across several topics. Thus, a list was constructed with words which seemed to contribute relatively little to the meaning of a specific topic. This list contained the following tokens: *people, world, talk, time, other, hundred, one, life, thousand, number, way, year, thing, story, day, lot, question, idea, word*.
+7. Lastly, after running the LDA model multiple times, there were some words which occurred across several topics. Thus, a list was constructed with words which seemed too occur frequently across talks, but tell relatively little about the specific topic of a talk. This list contained the following tokens: *people, world, talk, time, other, hundred, one, life, thousand, number, way, year, thing, story, day, lot, question, idea, word*.
 
 ### LDA Topic Modelling
-LDA topic modelling is an unsupervised machine learning algorithm, which can help to extract topics from unlabelled text documents. LDA builds on the assumption that words in documents are derived from different clusters of topics. Put differently, words cluster into different topics, and documents are made up of these words. Thus, the distribution of words (and which cluster they belong to) can help to determine the distribution of topics for each document. The aim of LDA is to reverse engineer the topics (clusters) from which the words were drawn. In this project, each of the transcripts of talks is considered to be a document in a large corpus of documents (corpus of transcripts). After preprocessing the transcripts as described above, the dictionary and corpus of tokens across all documents were extracted. These were then used to train a LDAMulticore model. The model was once trained to extract 15 topics and once for 20 topics. Based on a higher coherence score for 15 topics (0.46) compared to 20 topics (0.45), the focus in the following will be on the model trained for 15 topics. However, output is provided for both models in the out/ directory of the GitHub repository. Optimally, an exploration of more coherence values for different number of topics should have been conducted, but was omitted for time and processing reasons. From the trained model, the following outputs were extracted and generated to answer the questions (1)-(3) outlined above: 
+LDA (Latent Direct Allocation) topic modelling is an unsupervised machine learning algorithm, which can help to extract topics from unlabelled text documents. LDA builds on the assumption that words in documents are derived from different clusters of topics. Put differently, words cluster into different topics, and documents are made up of these words. Thus, the distribution of words (and which cluster they belong to) can help to determine the distribution of topics for each document. LDA aims to reverse engineer the topics (clusters) from which the words were drawn. In this project, the transcripts of talks were considered to be the documents in a large corpus of documents (transcripts). After preprocessing the transcripts as described above, the dictionary and corpus of tokens across all documents were extracted. The dictionary contains the mapping of tokens to integers, while the corpus contains these inter-id’s and how often they occur. These were then used to train an LDA Multicore model. The model was once trained to extract 15 topics and once for 20 topics. Based on a higher coherence score for 15 topics (0.46) compared to 20 topics (0.45), the focus in the following will be on the model trained for 15 topics. However, the output is provided for both models in the out/ directory of the GitHub repository. Optimally, an exploration of more coherence values for a different number of topics should have been conducted, but was omitted for time and processing reasons. From the trained model, the following outputs were extracted and generated to answer the questions (1)-(3) outlined above: 
 
 1. Metrics: The perplexity and coherence scores of the LDA model are stored. The focus was on the coherence score, which is a measure of how similar words in a topic are. 
 2. Keywords: The top 10 keywords for each topic are extracted and their counts and weights were visualised in bar graphs. 
@@ -66,11 +66,11 @@ LDA topic modelling is an unsupervised machine learning algorithm, which can hel
 **!** The scripts have only been tested on Linux, using Python 3.6.9. 
 
 ### 1. Cloning the Repository and Installing Dependencies
-To run the scripts in this repository, I recommend cloning this repository and installing necessary dependencies in a virtual environment. The bash script `create_venv.sh` can be used to create a virtual environment called `venv_LDA` with all necessary dependencies, listed in the `requirements.txt` file. The following commands can be used:
+To run the scripts in this repository, I recommend cloning this repository and installing necessary dependencies in a virtual environment. The bash script `create_venv.sh` can be used to create a virtual environment called `venv_LDA` with all necessary dependencies, listed in the `requirements.txt` file. This will also load the required language model (`en_core_web_sm`, from spaCy). The following commands can be used:
 
 ```bash
 # cloning the repository
-git clone https://github.com/nicole-dwenger/cdslanguage-LDA.git
+git clone https://github.com/nicole-dwenger/cdslanguage-LDA.gi`
 
 # move into directory
 cd cdslanguage-LDA/
@@ -122,7 +122,7 @@ __Output saved in__ saved `out/LDA_{n_topics}_topics`:
    Origial .csv dataframe, with appended columns of dominant_topic and topic_perc_contib.
    
 - `LDA_representatives.txt`\
-   For each topic, the three talks with the highest contribution are printed. 
+   For each topic, the three talks with the highest contribution are saved. 
    
 - `LDA_topics_over_time.png`\
    Visualisation of development of topics over time. 
@@ -157,20 +157,19 @@ Based on these keywords, I could imagine the following fitting topic names:
 
 Overall, it seems that for some clusters e.g. *Psychology & Neuroscience* (4) or *Health Care* (8) it was quite easy to see how the keywords fit into a category. For others, e.g. *Human Body & Animals* (3) it was more difficult, since words seemed quite different (animal, robot, egg).
 
-### 2. Are there any temporal developments in the topics of TedTalks?
-
-Below, the temporal development of topics from 2016-2020 are displayed (Figure 3.2). Looking at this development, there seem to be a few topics which are fairly dominant across time, such as Topic (10) *Family*, Topic (1) *Climate & Environment* and Topic (2) *Technology*. For me, this makes intuitively sense, as these topics have been quite dominant in the past years. Further, it may also be that many talks relate to these topics in some way. For Topic (13) *Planet Earth & Space* there seems to be an increase around 2019, which could be due to an increased interest in exploring Mars or other planets.
-
-![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topics_over_time.png)
-
-
-### 3.Is it possible to extract representative talks for each of the topics?
+### 2. Is it possible to extract representative talks for each of the topics?
 
 The full list of representative talks for each topic can be seen in this [file](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_representatives.txt), stored in the `out/` directory. Only a few examples will be discussed in the following. 
 
 - For Topic (4) *Psychology & Neuroscience*, the following titles were extracted: 'How stress affects your brain', 'How memories form and how we lose them', 'What happens when you have a concussion?'. Without knowing anything about the talks, these titles all seem to relate to the given topic name.
 - For Topic (13) *Planet Earth & Space* the following titles were extracted: 'A needle in countless haystacks: Finding habitable worlds', '3 moons and a planet that could have alien life', 'Could the Earth be swallowed by a black hole?'. Again, based on their titles, these talks all seem to fit into a theme of exploring space and finding life on another planet. 
 - For Topic (10) *Family* the following titles were extracted: 'Why we should take laughter more seriously', 'Love others to love yourself', "I grew up in the Westboro Baptist Church. Here's why I left". Here, it seems that the given title of Family does not really fit, but rather these titles fit into a category of Life Advice or Lifestyle. However, the keywords of child, family, friend, love, conversation seem to fit to the talks, as they relate to the interaction with others. 
+
+### 3. Are there any temporal developments in the topics of TedTalks?
+
+Below, the temporal development of topics from 2016-2020 are displayed (Figure 3.2). Looking at this development, there seem to be a few topics which are fairly dominant across time, such as Topic (10) *Family*, Topic (1) *Climate & Environment* and Topic (2) *Technology*. For me, this makes intuitively sense, as these topics have been quite dominant in the past years. Further, it may also be that many talks relate to these topics in some way. For Topic (13) *Planet Earth & Space* there seems to be an increase around 2019, which could be due to an increased interest in exploring Mars or other planets.
+
+![](https://github.com/nicole-dwenger/cdslanguage-LDA/blob/master/out/LDA_15_topics/LDA_topics_over_time.png)
 
 
 ## Contact
