@@ -3,7 +3,7 @@
 [Description](#description) | [Methods](#methods) | [Repository Structure](#repository-structure) | [Usage](#usage) | [Results and Disucssion](#results-and-discussion) | [Contact](#contact)
 
 ## Description
-> This project relates to Assignment 5: (Un)Supervised Machine Learning
+> This project relates to Assignment 5: (Un)Supervised Machine Learning.
 
 TedTalks have become popular as videos in which experts share their knowledge and ideas. What if, in 100 years someone finds all these videos, but has no idea what they are about. It would be tedious to watch all of them, to find out. Thus, it would be great if there was a way to figure out which topics these talks cover based on their contents. Consequently, it would also be possible to find talks which cover a specific topic of interest. Lastly, knowing what different talks were about and when they were published could also help to investigate how topics in these talks developed over time, as an interesting indicator from a cultural perspective. This project aimed to investigate topics in transcripts of TedTalks using unsupervised machine learning, specifically LDA topic modelling.  Specifically, the following questions were of interest:
  
