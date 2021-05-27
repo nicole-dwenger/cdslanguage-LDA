@@ -94,7 +94,7 @@ def main():
     # Get bigrams and trigrams
     bigram_mod, trigram_mod = extract_grams(texts, min_count=3, threshold=100)
     
-    # Process words: remove stopwords, create bigrams, trigrams, extract POS tokens, lemmatize
+    # Process words: remove stopwords, create bigrams, trigrams, extract POS tokens, lemmatize - returns list of tokens for each text
     processed_texts = process_words(texts, nlp, bigram_mod, trigram_mod, stop_words, allowed_postags=['NOUN'])
     
     # Remove self-defined list of words

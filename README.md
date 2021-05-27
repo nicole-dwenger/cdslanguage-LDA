@@ -70,7 +70,7 @@ To run the scripts in this repository, I recommend cloning this repository and i
 
 ```bash
 # cloning the repository
-git clone https://github.com/nicole-dwenger/cdslanguage-LDA.gi`
+git clone https://github.com/nicole-dwenger/cdslanguage-LDA.git
 
 # move into directory
 cd cdslanguage-LDA/
