@@ -155,7 +155,7 @@ Based on these keywords, I could imagine the following fitting topic names:
 - Topic 13: Earth & Space
 - Topic 14: Love & Music
 
-Overall, it seems that for some clusters e.g. *Psychology & Neuroscience* (4) or *Health Care* (8) it was quite easy to see how the keywords fit into a category. For others, e.g. *Human Body & Animals* (3) it was more difficult, since words seemed quite different (animal, robot, egg).
+Overall, it seems that for some clusters e.g. Topic (4) *Psychology & Neuroscience* or (8) *Health Care* it was quite easy to see how the keywords fit into a category. For others, e.g., Topic (3) *Human Body & Animals* it was more difficult, as words (e.g. animal, robot, egg) seemed to originate from rather different topics, based on my judgement.
 
 ### 2. Is it possible to extract representative talks for each of the topics?
 
